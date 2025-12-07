@@ -251,15 +251,15 @@
                         </ul>
                     </div>
 
-                    <form class="contact-form">
+                    <form id="contactForm" class="contact-form">
                         <div class="form-row">
-                            <input type="text" placeholder="Your Name" required />
+                            <input type="text" id="name" placeholder="Your Name" required />
                         </div>
                         <div class="form-row">
-                            <input type="email" placeholder="Your Email" required />
+                            <input type="email" id="email" placeholder="Your Email" required />
                         </div>
                         <div class="form-row">
-                            <textarea rows="4" placeholder="Your Message" required></textarea>
+                            <textarea rows="4" id="message" placeholder="Your Message" required></textarea>
                         </div>
                         <button type="submit" class="btn primary full-width">Send Message (UI Only)</button>
                         <p class="form-note">
@@ -278,10 +278,31 @@
             <p class="footer-small">Built with passion, patience, and plenty of coffee.</p>
         </div>
     </footer>
-
     <script>
-        // Set current year automatically
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+    // Current year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Contact form handler
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", async function(e){
+        e.preventDefault();
+
+        const data = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+
+        await fetch("https://3v7vuamlb8.execute-api.us-east-1.amazonaws.com/prodcontact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        });
+
+        alert("Message Sent!");
+        form.reset();
+    });
+</script>
 </body>
 </html>
