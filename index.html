@@ -294,7 +294,7 @@
             message: document.getElementById("message").value
         };
 
-        await fetch("https://3v7vuamlb8.execute-api.us-east-1.amazonaws.com/prodcontact", {
+        await fetch("https://3v7vuamlb8.execute-api.us-east-1.amazonaws.com/prod/contact", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
