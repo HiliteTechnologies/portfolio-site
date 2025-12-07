@@ -278,31 +278,15 @@
             <p class="footer-small">Built with passion, patience, and plenty of coffee.</p>
         </div>
     </footer>
-    <script>
-    // Current year
-    document.getElementById("year").textContent = new Date().getFullYear();
+   <script>
+document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Contact form handler
-    const form = document.getElementById("contactForm");
+alert("✅ JavaScript Loaded Successfully");
 
-    form.addEventListener("submit", async function(e){
-        e.preventDefault();
-
-        const data = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value
-        };
-
-        await fetch("https://3v7vuamlb8.execute-api.us-east-1.amazonaws.com/prod/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-
-        alert("Message Sent!");
-        form.reset();
-    });
+document.getElementById("contactForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    alert("✅ Button Click Detected!");
+});
 </script>
 </body>
 </html>
